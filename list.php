@@ -72,7 +72,10 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
                 <div class="card">
-                    <h5 class="card-header">Daftar Nama Pegawai</h5>
+                  <div style="display:flex; justify-content:space-between; flex-direction:row">
+                    <h5 class="card-header">Daftar Nama Pegawai </h5>
+                    <a href="Vadd.php" class="btn btn-primary" style="margin:8px 8px;">Tambah Data</a>
+                    </div>
                         <div class="table-responsive text-nowrap">
                             <table class="table">
                               <thead class="table-light">
