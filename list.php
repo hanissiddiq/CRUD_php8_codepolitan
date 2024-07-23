@@ -101,8 +101,14 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                   <td><?php echo $pegawai["tempat_lahir"] ?></td>
                                   <td><?php echo $pegawai["tanggal_lahir"] ?></td>
                                   <td><?php echo $pegawai["nomer_seluler"] ?></td>
-                                  <td><?php echo $pegawai["status_perkawinan"] ?></td>                                  
-                                  <td><span class="badge bg-label-info me-1">Edit</span></td>
+                                  <td><?php echo $pegawai["status_perkawinan"] ?></td>
+
+                                  <td>
+                                    <a href="Vedit.php?id=<?php echo $pegawai["id"]?>">
+                                      <span class="mdi mdi-square-edit-outline"></span>
+                                    </a>
+                                  </td>
+
                                   <td><span class="badge bg-label-danger me-1">Hapus</span></td>
                                   
                               <?php endforeach?>
