@@ -92,13 +92,13 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                               <?php foreach ($result as $index => $pegawai):?>
                                 <tr>
                                   <td><?php echo $index + 1 ?></td>
-                                  <td><?php echo $pegawai["nama"] ?></td>
+                                  <td><a href="profil.php?id=<?php echo $pegawai['id']?>"><?php echo $pegawai["nama"] ?></a></td>
                                   <td><?php echo $pegawai["jenis_kelamin"] ?></td>
                                   <td><?php echo $pegawai["alamat"] ?></td>
                                   <td><?php echo $pegawai["tempat_lahir"] ?></td>
                                   <td><?php echo $pegawai["tanggal_lahir"] ?></td>
                                   <td><?php echo $pegawai["nomer_seluler"] ?></td>
-                                  <td><?php echo $pegawai["status_perkawinan"] ?></td>
+                                  <td><?php echo $pegawai["status_perkawinan"] ?></td>                                  
                                   <td><span class="badge bg-label-info me-1">Edit</span></td>
                                   <td><span class="badge bg-label-danger me-1">Hapus</span></td>
                                   
