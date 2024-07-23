@@ -9,51 +9,132 @@ $pegawai = mysqli_fetch_assoc($query);
 // print_r($pegawai);
 ?>
 
-<html>
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="assets/"
+  data-template="vertical-menu-template">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Daftar Pegawai</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/vendor/fonts/materialdesignicons.css" />
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="assets/vendor/libs/typeahead-js/typeahead.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="assets/vendor/js/template-customizer.js"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="assets/js/config.js"></script>
+  </head>
     <body>
+    <div class="layout-container">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <div class="card p-3">
+                    
+
+    <form method="POST" action="update.php" >
         <h2>Ubah Data</h2>
-    <form action="update.php" method="POST"  >
-        
-        <input type="text" name="id" value="<?php echo $pegawai["id"]; ?>">
-        <label for="">Nama :</label>
-        <input type="text" name="nama" value="<?php echo $pegawai['nama'];?>">
-        <br>
-        
-        <label for="">Jenis Kelamin</label>
-        <select name="jenis_kelamin" id="">
-            <option value="Laki-Laki" 
-                <?php if ($pegawai['jenis_kelamin'] == "Laki-Laki") 
-                { echo "selected";} ?>>Laki-Laki
-            </option>
-            <option value="Perempuan"
-            <?php if ($pegawai['jenis_kelamin'] == "Perempuan") 
-                { echo "selected";} ?>>Perempuan</option>
-        </select>
-       </br>
-        <label for="">Alamat</label>
-        <textarea name="alamat"> <?php echo $pegawai['alamat'];?> </textarea>
-        </br>
-        <label for="">Tempat Lahir</label>
-        <input type="text" name="tempat_lahir" value="<?php echo $pegawai['tempat_lahir'];?>">
-        </br>
-        <label for="">Tanggal Lahir</label>
-        <input type="date" name="tanggal_lahir" value="<?php echo $pegawai['tanggal_lahir'];?>">
-        </br>
-        <label for="">Nomer Seluler</label>
-        <input type="text" name="nomer_seluler" value="<?php echo $pegawai['nomer_seluler'];?>">
-       </br>
-        <label for="">Status Perkawinan</label>
-        <select name="status_perkawinan" id="">
-            <option value="Belum Menikah" 
-                <?php if ($pegawai['status_perkawinan'] == "Belum Menikah") 
+        <input type="hidden" name="id" value="<?= $pegawai['id'];?>">
+        <table class="mb-2">
+            <tr>
+                <td><label for="nama">Nama</label></td>
+                <td>:</td>
+                <td><input type="text" id="nama" name="nama" class="form-control" value="<?php echo $pegawai['nama'];?>"></td>
+            </tr>
+
+            <tr>
+                <td><label for="jenis_kelamin">Jenis Kelamin</label></td>
+                <td>:</td>
+                <td> <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
+                        <option value="Laki-Laki" <?php if ($pegawai['jenis_kelamin'] == "Laki-Laki") 
+                { echo "selected";} ?> >Laki-Laki</option>
+                        <option value="Perempuan" <?php if ($pegawai['jenis_kelamin'] == "Perempuan") 
+                { echo "selected";} ?> >Perempuan</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="alamat">Alamat</label></td>
+                <td>:</td>
+                <td><textarea name="alamat" id="alamat" class="form-control" ><?php echo $pegawai['alamat'];?></textarea></td>
+            </tr>
+
+            <tr>
+                <td><label for="tempat_lahir">Tempat Lahir</label></td>
+                <td>:</td>
+                <td><input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control" value="<?php echo $pegawai['tempat_lahir'];?>"></td>
+            </tr>
+            <tr>
+                <td><label for="tanggal_lahir">Tanggal Lahir</label></td>
+                <td>:</td>
+                <td><input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control" value="<?php echo $pegawai['tanggal_lahir'];?>"></td>
+            </tr>
+            <tr>
+                <td><label for="nomer_seluler">Nomer Seluler</label></td>
+                <td>:</td>
+                <td><input type="text" name="nomer_seluler" id="nomer_seluler" class="form-control" value="<?php echo $pegawai['nomer_seluler'];?>"></td>
+            </tr>
+            <tr>
+                <td><label for="status_perkawinan">Status Perkawinan</label></td>
+                <td>:</td>
+                <td> <select name="status_perkawinan" id="status_perkawinan" class="form-select">
+                        <option value="Belum Menikah" <?php if ($pegawai['status_perkawinan'] == "Belum Menikah") 
                 { echo "selected";} ?>>Belum Menikah</option>
-            <option value="Sudah Menikah"
-                <?php if ($pegawai['status_perkawinan'] == "Sudah Menikah") 
-                { echo "selected";} ?>>Sudah Menikah</option>
-        </select>
-        </br>
-        <button type="submit">Ubah</button>
-        <a href="list.php">Kembali</a>
+                        <option value="Sudah Menikah" <?php if ($pegawai['status_perkawinan'] == "Sudah Menikah") 
+                { echo "selected";} ?> >Sudah Menikah</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+       
+        <button type="submit" class="btn btn-primary">Ubah</button>
+        <a href="list.php" class="btn btn-warning">Kembali</a>
+
         </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </body>
 </html>
