@@ -99,7 +99,7 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                   <td><?php echo $pegawai["jenis_kelamin"] ?></td>
                                   <td><?php echo $pegawai["alamat"] ?></td>
                                   <td><?php echo $pegawai["tempat_lahir"] ?></td>
-                                  <td><?php echo $pegawai["tanggal_lahir"] ?></td>
+                                  <td><?php echo date("d/m/Y",strtotime($pegawai["tanggal_lahir"]));?></td>
                                   <td><?php echo $pegawai["nomer_seluler"] ?></td>
                                   <td><?php echo $pegawai["status_perkawinan"] ?></td>
 
@@ -109,8 +109,12 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                     </a>
                                   </td>
 
-                                  <td><span class="badge bg-label-danger me-1">Hapus</span></td>
-                                  
+                                  <td>
+                                    <a href="delete.php?id=<?php echo $pegawai["id"]?>">
+                                      <span class="mdi mdi-trash-can-outline text-danger"></span>
+                                    </a>
+                                  </td>
+                                                         
                               <?php endforeach?>
                                 </tr>
                               </tbody>
