@@ -1,11 +1,13 @@
 <?php
 include("koneksi.php");
 
-$query = mysqli_query($koneksi, "SELECT * FROM pegawai");
+$keyword = $_GET["keyword"];
+$query = mysqli_query($koneksi, "SELECT * FROM pegawai WHERE nama LIKE '%$keyword%' or alamat LIKE '%$keyword%'");
 $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 // echo "<pre>";
 // print_r($result);
+
 
 ?>
 
@@ -64,7 +66,7 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
       <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
           <div style="display:flex; justify-content:space-between; flex-direction:row">
-            <h5 class="card-header">Daftar Nama Pegawai </h5>
+            <h5 class="card-header">Search</h5>
 
             <form action="search.php" method="GET">
               <div class="container mt-2">
@@ -74,6 +76,9 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
                   </div>
                   <div class="col-auto">
                     <button class="btn btn-warning" type="submit">Cari</button>
+                  </div>
+                  <div class="col-auto">
+                    <a href="list.php" class="btn btn-danger">Kembali</a>
                   </div>
                 </div>
               </div>
