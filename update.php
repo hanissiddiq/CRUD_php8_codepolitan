@@ -1,6 +1,6 @@
 <?php
 include("koneksi.php");
- 
+
 $id = $_POST["id"];
 $nama = $_POST["nama"];
 $jenis_kelamin = $_POST["jenis_kelamin"];
@@ -15,8 +15,9 @@ $status_perkawinan = $_POST["status_perkawinan"];
 // // die;
 
 try {
-    mysqli_query($koneksi,
-            "UPDATE pegawai 
+    mysqli_query(
+        $koneksi,
+        "UPDATE pegawai 
             SET nama ='$nama',
                 jenis_kelamin ='$jenis_kelamin',
                 alamat ='$alamat',
@@ -24,10 +25,10 @@ try {
                 tanggal_lahir ='$tanggal_lahir',
                 nomer_seluler ='$nomer_seluler',
                 status_perkawinan ='$status_perkawinan'
-            WHERE id = $id");
+            WHERE id = $id"
+    );
 
-            header("Location:list.php");
-    
+    header("Location:list.php");
 } catch (Exception $e) {
     echo "</br> Gagal Update Database: " . $e->getMessage();
 }
